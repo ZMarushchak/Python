@@ -11,7 +11,7 @@ class test(unittest.TestCase):
         #print "CURRENT DIR::::%s" % CURRENT_DIR
         out = check_output(["python", CURRENT_DIR + "/app.py"])
         # print "PRINTED:%s" % out
-        return self.assertTrue(out.find('FUCK')!=-1)
+        return self.assertTrue(out.find('Hello')!=-1)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(test)
 unittest.TextTestRunner(verbosity=2).run(suite)
