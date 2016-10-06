@@ -14,7 +14,7 @@ class test(unittest.TestCase):
         return self.assertTrue(out.find('Hello')!=-1)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(test)
-unittest.TextTestRunner(verbosity=2).run(suite)
-ret = unittest.TestResult().wasSuccessful()
+runner = unittest.TextTestRunner(verbosity=2).run(suite)
+ret = not runner.wasSuccessful()
 sys.exit(ret)
 
