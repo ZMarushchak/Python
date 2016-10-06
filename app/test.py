@@ -1,6 +1,7 @@
 import unittest
 from subprocess import check_output
 import os
+import sys
 
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -14,4 +15,6 @@ class test(unittest.TestCase):
 
 suite = unittest.TestLoader().loadTestsFromTestCase(test)
 unittest.TextTestRunner(verbosity=2).run(suite)
+ret = unittest.TestResult().wasSuccessful()
+sys.exit(ret)
 
