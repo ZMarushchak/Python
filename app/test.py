@@ -7,7 +7,7 @@ CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 class test(unittest.TestCase):
 
     def test(self):
-        #print "CURRENT DIR::::%s" % CURRENT_DIR
+        print "CURRENT DIR::::%s" % CURRENT_DIR
         out = check_output(["python", CURRENT_DIR + "/app.py"])
         # print "PRINTED:%s" % out
         return self.assertTrue(out.find('Hello')!=-1)
