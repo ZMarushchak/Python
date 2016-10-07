@@ -1,5 +1,4 @@
 FROM python:2.7
 ADD . /code
 WORKDIR /code
-RUN pip install -r requirements.txt
-CMD python test.py
+CMD python app.py
