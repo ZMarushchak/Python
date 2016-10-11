@@ -1,8 +1,28 @@
 version: '2'
 services:
+    test:
+        build: ./tests
+        depends_on:
+            - hub
+            - app
     app:
         build: ./app
-        links: tests
-    tests:
-        build: ./tests
-        links: app
+        ports:
+            - "5000:5000"
+    hub:
+        build: ./selenium_grid
+        ports:
+            - "4444:4444"
+    firefox:
+        build: ./selenium_fox
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+        links:
+            - app
+    chrome:
+        build: ./selenium_chrome
+        environment:
+            - HUB_PORT_4444_TCP_ADDR=hub
+        links:
+            - app
+
