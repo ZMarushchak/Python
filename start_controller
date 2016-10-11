@@ -1,0 +1,14 @@
+#!/bin/bash
+
+docker-compose up -d --build
+while : ; do
+    output="$(docker-compose logs | grep test_)"
+    if echo "$output" | grep -q "Ran"; then
+        echo "Tests completion detected"
+        break
+    fi
+done
+docker-compose kill
+if echo "$output" | grep -q "FAIL"; then
+    exit -1
+fi
