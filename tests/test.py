@@ -4,6 +4,7 @@ import os
 import sys
 import time
 from selenium.webdriver.common.desired_capabilities import DesiredCapabilities
+import xmlrunner
 
 CURRENT_DIR = os.path.dirname(os.path.realpath(__file__))
 
@@ -95,7 +96,17 @@ class test(unittest.TestCase):
         self.assertIn('world', bodychrome.text)
         time.sleep(2)
 
-suite = unittest.TestLoader().loadTestsFromTestCase(test)
-runner = unittest.TextTestRunner(verbosity=2).run(suite)
-ret = not runner.wasSuccessful()
-sys.exit(ret)
+if __name__ == '__main__':
+    with open('/results.xml', 'wb') as output:
+        unittest.main(
+            testRunner=xmlrunner.XMLTestRunner(output=output),
+            failfast=False, buffer=False, catchbreak=False)
+
+
+
+
+# suite = unittest.TestLoader().loadTestsFromTestCase(test)
+# runner = unittest.TextTestRunner(verbosity=2).run(suite)
+# ret = not runner.wasSuccessful()
+# sys.exit(ret)
+

@@ -5,6 +5,7 @@ services:
         depends_on:
             - hub
             - app
+         command: python test.py
     app:
         build: ./app
         ports:
@@ -25,4 +26,3 @@ services:
             - HUB_PORT_4444_TCP_ADDR=hub
         links:
             - app
-
